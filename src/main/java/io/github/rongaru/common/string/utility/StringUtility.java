@@ -2,164 +2,118 @@ package io.github.rongaru.common.string.utility;
 
 import java.util.Collection;
 
-/**
- * @author Name: Roshan Garu
- * <br> Email: rongaru@gmail.com
- * <br> Mobile Phone: +9779860200899
- */
 public class StringUtility {
 
-	/**
-	 * @param value input value.
-	 * @return This function will return an empty string if the input value is null else it will remove outer whitespace from value.
-	 */
-	public static String clean( String value ) {
+	public static String clean( String string ) {
 
-		return value == null ? "": value.trim( );
+		return string == null ? "": string.trim( );
 
 	}
 
-	/**
-	 * @param value input value.
-	 * @return This function will return is the null value or an empty String.
-	 */
-	public static boolean isEmpty( String value ) {
+	public static boolean isEmpty( String string ) {
 
-		return value == null || value.trim( ).isEmpty( );
+		return string == null || string.trim( ).isEmpty( );
 
 	}
 
-	/**
-	 * @param value input value.
-	 * @return This function will return is the non-null value and non-empty String.
-	 */
-	public static boolean isNotEmpty( String value ) {
+	public static boolean isNotEmpty( String string ) {
 
-		return value != null && !value.trim( ).isEmpty( );
+		return string != null && !string.trim( ).isEmpty( );
 
 	}
 
-	/**
-	 * @param value input value.
-	 * @return This function will return an empty string if the input value is null.
-	 */
-	public static String defaultString( String value ) {
+	public static String defaultString( String string ) {
 
-		return value == null ? "": value;
+		return string == null ? "": string;
 
 	}
 
-	/**
-	 * @param value        input value.
-	 * @param defaultValue replacement value.
-	 * @return This function will return the default value if the input value is null.
-	 */
-	public static String defaultString( String value, String defaultValue ) {
+	public static String defaultString( String string, String defaultValue ) {
 
-		return value == null ? defaultValue: value;
+		return string == null ? defaultValue: string;
 
 	}
 
-	/**
-	 * @param values input value.
-	 * @return This function will concat all values inside the collection.
-	 */
-	public static String concat( Collection< String > values ) {
+	public static String reverse( String string ) {
 
-		return String.join( "", values );
+		return new StringBuilder( string ).reverse( ).toString( );
 
 	}
 
-	/**
-	 * @param values    input values.
-	 * @param delimiter between values.
-	 * @return This function will concat all values inside the collection with delimiter.
-	 */
-	public static String concat( Collection< String > values, String delimiter ) {
+	public static boolean containsIgnoreCase( String string, String search ) {
 
-		return String.join( delimiter, values );
+		return string.toLowerCase( ).contains( search.toLowerCase( ) );
 
 	}
 
-	/**
-	 * @param values    input values.
-	 * @param delimiter between values.
-	 * @param enclosure before and after concat values.
-	 * @return This function will concat all values inside the collection with delimiter and enclosure.
-	 */
-	public static String concat( Collection< String > values, String delimiter, String enclosure ) {
+	public static boolean startsWithIgnoreCase( String string, String search ) {
 
-		return enclosure + String.join( delimiter, values ) + enclosure;
+		return string.toLowerCase( ).startsWith( search.toLowerCase( ) );
 
 	}
 
-	/**
-	 * @param values         input values.
-	 * @param delimiter      between values.
-	 * @param leftEnclosure  before concat values.
-	 * @param rightEnclosure after concat values.
-	 * @return This function will concat all values inside the collection with delimiter and enclosures.
-	 */
-	public static String concat( Collection< String > values, String delimiter, String leftEnclosure, String rightEnclosure ) {
+	public static boolean endsWithIgnoreCase( String string, String search ) {
 
-		return leftEnclosure + String.join( delimiter, values ) + rightEnclosure;
+		return string.toLowerCase( ).endsWith( search.toLowerCase( ) );
 
 	}
 
-	/**
-	 * @param value  input value.
-	 * @param length length of output value.
-	 * @return This function will convert the value to the length by adding left padding with space character.
-	 */
-	public static String leftPadding( int length, String value ) {
+	public static String concat( Collection< String > strings ) {
 
-		return leftPadding( length, ' ', value );
+		return String.join( "", strings );
 
 	}
 
-	/**
-	 * @param value  input value.
-	 * @param length length of output value.
-	 * @return This function will convert the value to the length by adding right padding with space character.
-	 */
-	public static String rightPadding( int length, String value ) {
+	public static String concat( Collection< String > strings, String delimiter ) {
 
-		return rightPadding( length, ' ', value );
+		return String.join( delimiter, strings );
 
 	}
 
-	/**
-	 * @param value   input value.
-	 * @param padding padding character.
-	 * @param length  length of output value.
-	 * @return This function will convert the value to the length by adding left padding with padding character.
-	 */
-	public static String leftPadding( int length, char padding, String value ) {
+	public static String concat( Collection< String > strings, String delimiter, String enclosure ) {
+
+		return enclosure + String.join( delimiter, strings ) + enclosure;
+
+	}
+
+	public static String concat( Collection< String > strings, String delimiter, String leftEnclosure, String rightEnclosure ) {
+
+		return leftEnclosure + String.join( delimiter, strings ) + rightEnclosure;
+
+	}
+
+	public static String leftPadding( int length, String string ) {
+
+		return leftPadding( length, ' ', string );
+
+	}
+
+	public static String rightPadding( int length, String string ) {
+
+		return rightPadding( length, ' ', string );
+
+	}
+
+	public static String leftPadding( int length, char padding, String string ) {
 
 		StringBuilder builder = new StringBuilder( );
 
-		for ( int i = 0; i < length - value.length( ); i++ ) {
+		for ( int i = 0; i < length - string.length( ); i++ ) {
 
 			builder.append( padding );
 
 		}
 
-		builder.append( value );
+		builder.append( string );
 		return builder.toString( );
 
 	}
 
-	/**
-	 * @param value   input value.
-	 * @param padding padding character.
-	 * @param length  length of output value.
-	 * @return This function will convert the value to the length by adding right padding with padding character.
-	 */
-	public static String rightPadding( int length, char padding, String value ) {
+	public static String rightPadding( int length, char padding, String string ) {
 
-		StringBuilder builder = new StringBuilder( value );
+		StringBuilder builder = new StringBuilder( string );
 
-		for ( int i = 0; i < length - value.length( ); i++ ) {
+		for ( int i = 0; i < length - string.length( ); i++ ) {
 
 			builder.append( padding );
 

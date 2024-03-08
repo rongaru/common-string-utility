@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project Description -->
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <groupId>io.github.rongaru</groupId>
-    <name>Java Functional Interfaces</name>
+    <name>Java Common String Utility</name>
     <artifactId>common-string-utility</artifactId>
     <url>https://github.com/rongaru/common-string-utility</url>
     <description>This library contains common String Utility Class.</description>
